@@ -86,26 +86,45 @@ navbar.addEventListener("dblclick", change_href)
 
 // Fonctionnalité 6 :
 
-var view = document.querySelectorAll(".btn-success")
-var img = document.querySelectorAll(".card-img-top")
-var card2 = document.querySelectorAll(".card-text")
-console.log(view)
-console.log(img)
-console.log(card2)
+var views = document.querySelectorAll(".btn-success")
+var imgs = document.querySelectorAll(".card-img-top")
+var cards = document.querySelectorAll(".card-text")
 
 
+// fontion d'agrandissement des cartes
 
+var reduce_card = function(index){
 
-var change_card = function(){
-
-
-	img[1].style.width = "20%"
-	card2[1].innerHTML = ""
+	imgs[index].style.width = "20%";
+	cards[index].style.display = 'none';
 
 }
 
+// fontion d'agrandissement des cartes
 
-view[1].addEventListener("mouseover", change_card)
+var grow_card = function(index){
+
+	imgs[index].style.width = "100%";
+	cards[index].style.display = 'block';
+
+}
+
+// itération sur chacune des views
+
+views.forEach(function(view, index){
+	view.addEventListener("mouseover", function(){
+
+		if(cards[index].style.display === 'none'){
+			grow_card(index);
+		}
+		else{
+			reduce_card(index);
+		}
+	});
+});
+
+
+    
 
 
 
